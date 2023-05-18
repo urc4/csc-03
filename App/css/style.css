@@ -1,6 +1,104 @@
+/* Globals */
+/* :root { */
+/* could do a dark theme */
+/* --primary-background: #f2f2f2;
+  --secondary-background: #425a7d;
+  --btn-color: #e5fafc;
+  --btn-background: #a0c0d6;
+  --eraser-background: #df7356;
+  --display-color: #2a3240;
+  --display-background: #e5fafc; */
+/* } */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  background-color: grey;
+  color: black;
+  font-family: Orbitron, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Screen selection */
 .screen {
   display: none;
 }
 .active {
   display: block;
+}
+
+/* Cellphone */
+.cellphone {
+  /* flex: 1; */
+  background-color: #f2f2f2;
+  padding: 20px;
+  height: 400px;
+  width: 400px;
+}
+
+/* Styling for Menu screen */
+#menuScreen {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/* Styling for elements inside Menu screen */
+#menuScreen h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Styling for Schedule screen */
+#scheduleScreen {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/* Styling for elements inside Schedule screen */
+#scheduleScreen h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Styling for Feed screen */
+#feedScreen {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/* Styling for elements inside Feed screen */
+#feedScreen h1 {
+  color: #944;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Styling for Call screen */
+#callScreen {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/* Styling for elements inside Call screen */
+#callScreen h1 {
+  color: #995;
+  font-size: 24px;
+  margin-bottom: 10px;
 }

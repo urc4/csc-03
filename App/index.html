@@ -10,29 +10,36 @@
     <script src="./js/main.js" defer></script>
   </head>
   <body>
-    <!-- Button container -->
-    <div>
-      <button onclick="showScreen('scheduleScreen')">Schedule</button>
-      <button onclick="showScreen('feedScreen')">Feed</button>
-      <button onclick="showScreen('callScreen')">Call</button>
-    </div>
+    <div class="cellphone">
+      <!-- Menu screen -->
+      <div id="menuScreen" class="screen active">
+        <h1>Menu</h1>
+        <!-- Menu buttons -->
+        <button onclick="showScreen('scheduleScreen')">Schedule</button>
+        <button onclick="showScreen('feedScreen')">Feed</button>
+        <button onclick="showScreen('callScreen')">Call</button>
+      </div>
 
-    <!-- Schedule screen -->
-    <div id="scheduleScreen" class="screen">
-      <h1>Schedule</h1>
-      <!-- Schedule content -->
-    </div>
+      <!-- Schedule screen -->
+      <div id="scheduleScreen" class="screen">
+        <h1>Schedule</h1>
+        <!-- Schedule content -->
+        <button onclick="showScreen('menuScreen')">Menu</button>
+      </div>
 
-    <!-- Feed screen -->
-    <div id="feedScreen" class="screen">
-      <h1>Feed</h1>
-      <!-- Feed content -->
-    </div>
+      <!-- Feed screen -->
+      <div id="feedScreen" class="screen">
+        <h1>Feed</h1>
+        <!-- Feed content -->
+        <button onclick="showScreen('menuScreen')">Menu</button>
+      </div>
 
-    <!-- Call screen -->
-    <div id="callScreen" class="screen">
-      <h1>Call</h1>
-      <!-- Call content -->
+      <!-- Call screen -->
+      <div id="callScreen" class="screen">
+        <h1>Call</h1>
+        <!-- Call content -->
+        <button onclick="showScreen('menuScreen')">Menu</button>
+      </div>
     </div>
   </body>
 </html>
