@@ -97,6 +97,21 @@ body {
   margin-bottom: 10px;
 }
 
+#feedScreen #bowl {
+  width: 100px;
+  height: auto;
+}
+
+#feedScreen #feed {
+  width: 100px;
+  height: auto;
+}
+
+#feedScreen img {
+  width: 100%;
+  height: 100%;
+}
+
 /* Styling for Call screen */
 #callScreen {
   background-color: #f2f2f2;

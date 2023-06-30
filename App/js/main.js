@@ -1,3 +1,4 @@
+// Update classes to display the correct page
 function showScreen(screenId) {
   let screens = document.getElementsByClassName("screen");
   for (let i = 0; i < screens.length; i++) {
@@ -6,3 +7,7 @@ function showScreen(screenId) {
   let targetScreen = document.getElementById(screenId);
   targetScreen.classList.add("active");
 }
+
+// Menu
+
+// Schedule

@@ -8,6 +8,10 @@
 
     <link rel="stylesheet" href="./css/style.css" />
     <script src="./js/main.js" defer></script>
+    <script src="./js/menu.js" defer></script>
+    <script src="./js/schedule.js" defer></script>
+    <script src="./js/bowl.js" defer></script>
+    <script src="./js/telephone.js" defer></script>
   </head>
   <body>
     <div class="cellphone">
@@ -25,6 +29,7 @@
         <h1>Schedule</h1>
         <!-- Schedule content -->
         <button onclick="showScreen('menuScreen')">Menu</button>
+        <img src="./assets/images/feed-play-icon.png" alt="Transparent Image" />
       </div>
 
       <!-- Feed screen -->
@@ -32,6 +37,16 @@
         <h1>Feed</h1>
         <!-- Feed content -->
         <button onclick="showScreen('menuScreen')">Menu</button>
+        <div id="bowl">
+          <img src="./assets/images/bowl-empty-icon.png" alt="bowl" />
+        </div>
+        <div id="feed">
+          <img src="./assets/images/feed-play-icon.png" alt="feed" />
+        </div>
+        <div id="feed-audio">
+          <audio id="bark" src="./assets/sounds/bark.wav"></audio>
+          <audio id="meow" src="./assets/sounds/meow.wav"></audio>
+        </div>
       </div>
 
       <!-- Call screen -->

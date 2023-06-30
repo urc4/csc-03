@@ -6,15 +6,15 @@ const meal_icons = {
 
 // fazer comportamento dos botoes aqui?
 
-// what should happen if i leave this screen, should i reset all states or leave it be
+// what should happen if i leave this screen, should i reset all meal_states or leave it be
 // maybe for this one i dont need to reset but for the other two i should
 
-const inputs = {
+const meal_inputs = {
   last: 0,
   next: 1,
 };
 
-const states = {
+const meal_states = {
   breakfast: 0,
   lunch: 1,
   dinner: 2,
@@ -45,7 +45,7 @@ class Schedule {
     this.lunch = new Meal({ hours: 12, minutes: 15 });
     this.dinner = new Meal({ hours: 18, minutes: 45 });
 
-    this.state = states.breakfast;
+    this.state = meal_states.breakfast;
   }
   forward() {
     // create a div or change opacity of image
@@ -61,7 +61,7 @@ class Schedule {
   // poderia fazer uma maquina de estados mais geral com um ciclo for que a partir de uma variavel
   // que armazena a quantidade de refeicoes setadas pode verificar o input e ir para a proxima
   // para isso precisaria de um metodo para criar um novo horario e nomear ele ou nao que seria inserido
-  // na variavel states e seria instanciado como uma Meal que entraria na rotacao de refeicoes
+  // na variavel meal_states e seria instanciado como uma Meal que entraria na rotacao de refeicoes
   // precisaria tambem entao ter um destruidor para a refeicao sendo o limite minimo de apenas uma
   // mas ai se removesse ia ter que atualizar todas as posicoes do dicionario ou seria melhor que fosse um array
   // organizado por hora e minuto para poder pegar sua posicao no vetor direto, mas sugou
@@ -72,44 +72,44 @@ class Schedule {
 
   MEF_schedule(input) {
     switch (this.state) {
-      case states.breakfast:
-        if (input === inputs.last) {
-          this.state = states.dinner;
+      case meal_states.breakfast:
+        if (input === meal_inputs.last) {
+          this.state = meal_states.dinner;
           this.backward();
         }
 
-        if (input === inputs.next) {
-          this.state = states.lunch;
+        if (input === meal_inputs.next) {
+          this.state = meal_states.lunch;
           this.forward();
         }
         break;
 
-      case states.lunch:
-        if (input === inputs.last) {
-          this.state = states.breakfast;
+      case meal_states.lunch:
+        if (input === meal_inputs.last) {
+          this.state = meal_states.breakfast;
           this.backward();
         }
 
-        if (input === inputs.next) {
-          this.state = states.dinner;
+        if (input === meal_inputs.next) {
+          this.state = meal_states.dinner;
           this.forward();
         }
         break;
 
-      case states.dinner:
-        if (input === inputs.last) {
-          this.state = states.lunch;
+      case meal_states.dinner:
+        if (input === meal_inputs.last) {
+          this.state = meal_states.lunch;
           this.backward();
         }
 
-        if (input === inputs.next) {
-          this.state = states.breakfast;
+        if (input === meal_inputs.next) {
+          this.state = meal_states.breakfast;
           this.forward();
         }
         break;
 
       default:
-        this.state = states.breakfast;
+        this.state = meal_states.breakfast;
     }
   }
 }

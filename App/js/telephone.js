@@ -3,12 +3,12 @@ const call_icons = {
   hang_red: "../../assets/images/call-red-icon.png",
 };
 
-const inputs = {
+const call_inputs = {
   hang: 0,
   call: 1,
 };
 
-const states = {
+const call_states = {
   hung: 0,
   calling: 1,
 };
@@ -17,7 +17,7 @@ class Telephone {
   constructor() {
     this.own_number = "(61) 99389-7783";
     this.vet_number = "(61) 99389-7785";
-    this.state = states.hung;
+    this.state = call_states.hung;
   }
   call() {
     // update according to state
@@ -31,20 +31,20 @@ class Telephone {
 
   MEF_telephone(input) {
     switch (input) {
-      case states.hung:
-        if (input === inputs.call) {
+      case call_states.hung:
+        if (input === call_inputs.call) {
           this.call();
-          this.state = states.calling;
+          this.state = call_states.calling;
         }
         break;
-      case states.calling:
-        if (input === inputs.hang) {
+      case call_states.calling:
+        if (input === call_inputs.hang) {
           this.hang();
-          this.state = states.hung;
+          this.state = call_states.hung;
         }
         break;
       default:
-        this.state = states.hung;
+        this.state = call_states.hung;
     }
   }
 }
