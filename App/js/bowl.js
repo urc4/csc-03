@@ -1,6 +1,19 @@
 const FEED_BUTTON = document.querySelector("#feed");
 const BOWL = document.querySelector("#bowl");
 const AUDIO = document.querySelector("#feed-audio");
+const CAPACITY_DISPLAY = document.querySelector("#capacity-display");
+
+const imageButton = document.querySelector(".home-button");
+const image = imageButton.querySelector("img");
+const hoverImageSrc = "./assets/images/bowl-empty-icon.png";
+
+imageButton.addEventListener("mouseover", () => {
+  image.src = hoverImageSrc;
+});
+
+imageButton.addEventListener("mouseout", () => {
+  image.src = "./assets/images/home-button-icon.png";
+});
 
 function playSoundOnce(audio) {
   audio.play();
@@ -38,13 +51,19 @@ const bowl_states = {
 class Bowl {
   constructor() {
     this.feeding_rate = 20;
+    this.capacity = 20;
     //  inerente ao alimentador
     this.state = bowl_states.halted;
+    this.interval = null;
   }
   feed() {
+    // aqui vem o api pra pegar valor do simulador
     let bowl_image = BOWL.querySelector("img");
     let feed_button_image = FEED_BUTTON.querySelector("img");
     let bark = AUDIO.querySelector("#bark");
+
+    this.updateCapacity();
+    this.interval = setInterval(this.updateCapacity.bind(this), 1000);
 
     bowl_image.src = bowl_icons.bowl_full;
     feed_button_image.src = feed_icons.halt;
@@ -55,11 +74,21 @@ class Bowl {
     // add text saying who you feeding
     //  update according to state
   }
+  updateCapacity() {
+    this.capacity += this.feeding_rate;
+    CAPACITY_DISPLAY.textContent = `Capacity ${this.capacity}`;
+  }
+  stopUpdateCapacity() {
+    clearInterval(this.interval);
+  }
   halt() {
+    // aqui vem api pra atualizar capacidade do thingspeak
     // idem
     let bowl_image = BOWL.querySelector("img");
     let feed_button_image = FEED_BUTTON.querySelector("img");
     let meow = AUDIO.querySelector("#meow");
+
+    this.stopUpdateCapacity();
 
     bowl_image.src = bowl_icons.bowl_empty;
     feed_button_image.src = feed_icons.feed;
@@ -91,6 +120,8 @@ class Bowl {
 
 const feeding_screen = new Bowl();
 let feed_input = bowl_inputs.feed;
+
+CAPACITY_DISPLAY.textContent = `Capacity ${feeding_screen.capacity}`;
 
 FEED_BUTTON.addEventListener("click", () => {
   feeding_screen.MEF_bowl(feed_input);

@@ -15,45 +15,79 @@
   </head>
   <body>
     <div class="cellphone">
-      <!-- Menu screen -->
-      <div id="menuScreen" class="screen active">
-        <h1>Menu</h1>
-        <!-- Menu buttons -->
+      <div class="top-dash">
+        <div id="warning-lifeline">
+          <img src="./assets/images/heart-icon.png" alt="lifeline" />
+        </div>
+        <div id="profile-pic">
+          <img src="./assets/images/veterinary-icon.png" alt="profile-pic" />
+        </div>
+      </div>
+
+      <div class="dashboard">
+        <!-- Menu screen -->
+        <div id="menuScreen" class="screen active">
+          <h1>Menu</h1>
+          <!-- Menu buttons -->
+          <button onclick="showScreen('scheduleScreen')">Schedule</button>
+          <button onclick="showScreen('feedScreen')">Feed</button>
+          <button onclick="showScreen('callScreen')">Call</button>
+          <button onclick="showScreen('analysisScreen')">Analysis</button>
+        </div>
+
+        <!-- Schedule screen -->
+        <div id="scheduleScreen" class="screen">
+          <h1>Schedule</h1>
+          <!-- Schedule content -->
+          <button onclick="showScreen('menuScreen')">Menu</button>
+          <img
+            src="./assets/images/feed-play-icon.png"
+            alt="Transparent Image"
+          />
+        </div>
+
+        <!-- Feed screen -->
+        <div id="feedScreen" class="screen">
+          <h1>Feeding time</h1>
+          <!-- Feed content -->
+          <button onclick="showScreen('menuScreen')">
+            <div class="home-button">
+              <img src="./assets/images/home-button-icon.png" alt="home" />
+            </div>
+          </button>
+          <div id="bowl">
+            <img src="./assets/images/bowl-empty-icon.png" alt="bowl" />
+          </div>
+          <div id="feed">
+            <img src="./assets/images/feed-play-icon.png" alt="feed" />
+          </div>
+          <div id="feed-audio">
+            <audio id="bark" src="./assets/sounds/bark.wav"></audio>
+            <audio id="meow" src="./assets/sounds/meow.wav"></audio>
+          </div>
+          <div id="capacity-display">Capacity</div>
+        </div>
+
+        <!-- Call screen -->
+        <div id="callScreen" class="screen">
+          <h1>Call</h1>
+          <!-- Call content -->
+          <button onclick="showScreen('menuScreen')">Menu</button>
+        </div>
+
+        <!-- Call screen -->
+        <div id="analysisScreen" class="screen">
+          <h1>Analysis</h1>
+          <!-- Call content -->
+          <button onclick="showScreen('menuScreen')">Menu</button>
+        </div>
+      </div>
+      <div class="buttons-dash">
         <button onclick="showScreen('scheduleScreen')">Schedule</button>
         <button onclick="showScreen('feedScreen')">Feed</button>
+        <button onclick="showScreen('menuScreen')">Menu</button>
         <button onclick="showScreen('callScreen')">Call</button>
-      </div>
-
-      <!-- Schedule screen -->
-      <div id="scheduleScreen" class="screen">
-        <h1>Schedule</h1>
-        <!-- Schedule content -->
-        <button onclick="showScreen('menuScreen')">Menu</button>
-        <img src="./assets/images/feed-play-icon.png" alt="Transparent Image" />
-      </div>
-
-      <!-- Feed screen -->
-      <div id="feedScreen" class="screen">
-        <h1>Feed</h1>
-        <!-- Feed content -->
-        <button onclick="showScreen('menuScreen')">Menu</button>
-        <div id="bowl">
-          <img src="./assets/images/bowl-empty-icon.png" alt="bowl" />
-        </div>
-        <div id="feed">
-          <img src="./assets/images/feed-play-icon.png" alt="feed" />
-        </div>
-        <div id="feed-audio">
-          <audio id="bark" src="./assets/sounds/bark.wav"></audio>
-          <audio id="meow" src="./assets/sounds/meow.wav"></audio>
-        </div>
-      </div>
-
-      <!-- Call screen -->
-      <div id="callScreen" class="screen">
-        <h1>Call</h1>
-        <!-- Call content -->
-        <button onclick="showScreen('menuScreen')">Menu</button>
+        <button onclick="showScreen('analysisScreen')">Analysis</button>
       </div>
     </div>
   </body>
