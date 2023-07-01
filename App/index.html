@@ -12,9 +12,31 @@
     <script src="./js/schedule.js" defer></script>
     <script src="./js/bowl.js" defer></script>
     <script src="./js/telephone.js" defer></script>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
   </head>
   <body>
     <div class="cellphone">
+      <div class="top-cell"></div>
+      <div class="phone-info">
+        <div class="connection">
+          <div id="4g">
+            <i class="material-icons">signal_cellular_4_bar</i>
+            <span>Claro BR</span>
+          </div>
+          <div id="wifi">
+            <i class="material-icons">wifi</i>
+          </div>
+        </div>
+        <span id="current-hours"></span>
+        <div id="battery">
+          <span id="battery-life"></span>
+          <i id="battery-icon" class="material-icons">battery_full</i>
+        </div>
+      </div>
       <div class="top-dash">
         <div id="warning-lifeline">
           <img src="./assets/images/heart-icon.png" alt="lifeline" />
@@ -88,6 +110,9 @@
         <button onclick="showScreen('menuScreen')">Menu</button>
         <button onclick="showScreen('callScreen')">Call</button>
         <button onclick="showScreen('analysisScreen')">Analysis</button>
+      </div>
+      <div class="bottom-cell">
+        <i class="material-icons">check_box_outline_blank</i>
       </div>
     </div>
   </body>
