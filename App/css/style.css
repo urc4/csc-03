@@ -281,6 +281,10 @@ button {
   align-items: center;
 }
 
+.top-dash span {
+  font-weight: 800;
+}
+
 .top-dash img {
   width: 40px;
   height: 40px;
@@ -416,23 +420,33 @@ button {
   background-color: #75e6da;
 }
 
-/*  */
-/* Styling for elements inside Feed screen */
-/*  */
+#feedScreen .section-title {
+  margin-bottom: 50px;
+}
 
-#feedScreen h1 {
-  color: #944;
+#feedScreen .feed-display {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.feed-display .material-icons {
+  font-size: 48px;
+}
+
+.feed-display .feed-info {
+  display: flex;
+  flex-direction: column;
   font-size: 24px;
+  margin-left: 50px;
+  padding: 5px;
+  border-radius: 10px;
+  width: 160px;
 }
 
 #feedScreen #bowl {
   width: 100px;
-  height: auto;
-}
-
-#feedScreen #feed {
-  width: 100px;
-  height: auto;
+  height: 100px;
 }
 
 #feedScreen img {

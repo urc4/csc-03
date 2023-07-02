@@ -1,4 +1,4 @@
-const FEED_BUTTON = document.querySelector("#feed");
+const FEED_BUTTON = document.querySelector("#feed-button");
 const BOWL = document.querySelector("#bowl");
 const AUDIO = document.querySelector("#feed-audio");
 const CAPACITY_DISPLAY = document.querySelector("#capacity-display");
@@ -23,8 +23,8 @@ const bowl_icons = {
 };
 
 const feed_icons = {
-  feed: "./assets/images/feed-play-icon.png",
-  halt: "./assets/images/feed-pause-icon.png",
+  feed: "play_arrow",
+  halt: "pause",
 };
 
 const bowl_inputs = {
@@ -48,16 +48,19 @@ class Bowl {
   feed() {
     // aqui vem o api pra pegar valor do simulador
     let bowl_image = BOWL.querySelector("img");
-    let feed_button_image = FEED_BUTTON.querySelector("img");
     let bark = AUDIO.querySelector("#bark");
+    let btn_click = document.querySelector("#btn-click");
     let pour_food = AUDIO.querySelector("#pour-food");
 
     this.updateCapacity();
     this.interval = setInterval(this.updateCapacity.bind(this), 1000);
 
+    document.querySelector("#zeus").textContent = `Feeding Zeus`;
     bowl_image.src = bowl_icons.bowl_full;
-    feed_button_image.src = feed_icons.halt;
+    FEED_BUTTON.textContent = feed_icons.halt;
+
     playSound(bark);
+    playSound(btn_click);
     playSoundIndefinitely(pour_food);
 
     // create a div or change opacity of image
@@ -76,7 +79,7 @@ class Bowl {
     // aqui vem api pra atualizar capacidade do thingspeak
     // idem
     let bowl_image = BOWL.querySelector("img");
-    let feed_button_image = FEED_BUTTON.querySelector("img");
+    let btn_click = document.querySelector("#btn-click");
     let meow = AUDIO.querySelector("#meow");
     let pour_food = AUDIO.querySelector("#pour-food");
 
@@ -84,9 +87,11 @@ class Bowl {
 
     this.stopUpdateCapacity();
 
+    document.querySelector("#zeus").textContent = `Feed Zeus`;
     bowl_image.src = bowl_icons.bowl_empty;
-    feed_button_image.src = feed_icons.feed;
+    FEED_BUTTON.textContent = feed_icons.feed;
     playSound(meow);
+    playSound(btn_click);
   }
 
   MEF_bowl(input) {
