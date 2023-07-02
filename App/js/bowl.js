@@ -1,6 +1,6 @@
 const FEED_BUTTON = document.querySelector("#feed-button");
 const BOWL = document.querySelector("#bowl");
-const AUDIO = document.querySelector("#feed-audio");
+const AUDIO_FEED = document.querySelector("#feed-audio");
 const CAPACITY_DISPLAY = document.querySelector("#capacity-display");
 
 function playSoundOnce(audio) {
@@ -48,9 +48,9 @@ class Bowl {
   feed() {
     // aqui vem o api pra pegar valor do simulador
     let bowl_image = BOWL.querySelector("img");
-    let bark = AUDIO.querySelector("#bark");
+    let bark = AUDIO_FEED.querySelector("#bark");
     let btn_click = document.querySelector("#btn-click");
-    let pour_food = AUDIO.querySelector("#pour-food");
+    let pour_food = AUDIO_FEED.querySelector("#pour-food");
 
     this.updateCapacity();
     this.interval = setInterval(this.updateCapacity.bind(this), 1000);
@@ -80,8 +80,8 @@ class Bowl {
     // idem
     let bowl_image = BOWL.querySelector("img");
     let btn_click = document.querySelector("#btn-click");
-    let meow = AUDIO.querySelector("#meow");
-    let pour_food = AUDIO.querySelector("#pour-food");
+    let meow = AUDIO_FEED.querySelector("#meow");
+    let pour_food = AUDIO_FEED.querySelector("#pour-food");
 
     pour_food.pause();
 

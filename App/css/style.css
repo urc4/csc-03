@@ -462,9 +462,36 @@ button {
   background-color: #75e6da;
 }
 
-#callScreen h1 {
-  color: #995;
-  font-size: 24px;
+#callScreen .section-title {
+  margin-bottom: 20px;
+}
+
+#callScreen #doc {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+#ambulance .material-icons {
+  font-size: 96px;
+  color: red;
+}
+
+#call-button {
+  background-color: green;
+  border-radius: 50%;
+  font-size: 32px;
+  color: white;
+  padding: 5px;
+}
+
+#call-button:hover {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid black;
+}
+
+#call-button:active {
+  color: black;
 }
 
 /*  */
