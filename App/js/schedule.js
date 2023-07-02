@@ -1,13 +1,20 @@
-const meal_icons = {
-  meal_breakfast: "../../assets/images/breakfast-icon.png",
-  meal_lunch: "../../assets/images/lunch-icon.png",
-  meal_dinner: "../../assets/images/dinner-icon.png",
-};
+const MEAL = document.querySelector("#meal-card");
+const LAST_BUTTON = document.querySelector("#backward");
+const NEXT_BUTTON = document.querySelector("#forward");
 
-// fazer comportamento dos botoes aqui?
+function playSoundOnce(audio) {
+  audio.play();
+  audio.removeEventListener("ended", playSoundOnce);
+}
 
-// what should happen if i leave this screen, should i reset all meal_states or leave it be
-// maybe for this one i dont need to reset but for the other two i should
+function playSound(audio) {
+  audio.addEventListener("ended", playSoundOnce);
+  playSoundOnce(audio);
+}
+
+function playSoundIndefinitely(audio) {
+  audio.play();
+}
 
 const meal_inputs = {
   last: 0,
@@ -47,69 +54,100 @@ class Schedule {
 
     this.state = meal_states.breakfast;
   }
-  forward() {
-    // create a div or change opacity of image
-    // make a sound
-    // add text saying who you feeding
-    //  update according to state
-    //  talvez criar uma funcao update aqui dentro
-  }
-  backward() {
-    // idem
-  }
 
-  // poderia fazer uma maquina de estados mais geral com um ciclo for que a partir de uma variavel
-  // que armazena a quantidade de refeicoes setadas pode verificar o input e ir para a proxima
-  // para isso precisaria de um metodo para criar um novo horario e nomear ele ou nao que seria inserido
-  // na variavel meal_states e seria instanciado como uma Meal que entraria na rotacao de refeicoes
-  // precisaria tambem entao ter um destruidor para a refeicao sendo o limite minimo de apenas uma
-  // mas ai se removesse ia ter que atualizar todas as posicoes do dicionario ou seria melhor que fosse um array
-  // organizado por hora e minuto para poder pegar sua posicao no vetor direto, mas sugou
-
-  //   o que acontece quando muda de estado aqui, deveria eu fazer igual a transicao de telas/screens
-  //   do html usando uma classe second-active ou posso simplesmente mudar os conteudos usanod querySelcetor
-  //   que eu acho ser mais apropriado dado que todos vao ser forma identica e por isso o ultimo procedimento
+  display(meal) {
+    switch (meal) {
+      case meal_states.breakfast:
+        MEAL.querySelector(
+          "#scheduled-time"
+        ).textContent = `${this.breakfast.time.hours}:${this.breakfast.time.minutes}`;
+        MEAL.querySelector(
+          "#scheduled-quantity"
+        ).textContent = `${this.breakfast.weight} g`;
+        break;
+      case meal_states.lunch:
+        MEAL.querySelector(
+          "#scheduled-time"
+        ).textContent = `${this.lunch.time.hours}:${this.lunch.time.minutes}`;
+        MEAL.querySelector(
+          "#scheduled-quantity"
+        ).textContent = `${this.lunch.weight} g`;
+        break;
+      case meal_states.dinner:
+        MEAL.querySelector(
+          "#scheduled-time"
+        ).textContent = `${this.dinner.time.hours}:${this.dinner.time.minutes}`;
+        MEAL.querySelector(
+          "#scheduled-quantity"
+        ).textContent = `${this.dinner.weight} g`;
+        break;
+      default:
+        break;
+    }
+  }
 
   MEF_schedule(input) {
     switch (this.state) {
       case meal_states.breakfast:
         if (input === meal_inputs.last) {
+          this.display(meal_states.dinner);
           this.state = meal_states.dinner;
-          this.backward();
         }
 
         if (input === meal_inputs.next) {
+          this.display(meal_states.lunch);
           this.state = meal_states.lunch;
-          this.forward();
         }
         break;
 
       case meal_states.lunch:
         if (input === meal_inputs.last) {
+          this.display(meal_states.breakfast);
           this.state = meal_states.breakfast;
-          this.backward();
         }
 
         if (input === meal_inputs.next) {
+          this.display(meal_states.dinner);
           this.state = meal_states.dinner;
-          this.forward();
         }
         break;
 
       case meal_states.dinner:
         if (input === meal_inputs.last) {
+          this.display(meal_states.lunch);
           this.state = meal_states.lunch;
-          this.backward();
         }
 
         if (input === meal_inputs.next) {
+          this.display(meal_states.breakfast);
           this.state = meal_states.breakfast;
-          this.forward();
         }
         break;
 
       default:
         this.state = meal_states.breakfast;
+        break;
     }
   }
 }
+
+const schedule_screen = new Schedule();
+
+MEAL.querySelector(
+  "#scheduled-time"
+).textContent = `${schedule_screen.breakfast.time.hours}:${schedule_screen.breakfast.time.minutes}`;
+MEAL.querySelector(
+  "#scheduled-quantity"
+).textContent = `${schedule_screen.breakfast.weight} g`;
+
+LAST_BUTTON.addEventListener("click", () => {
+  schedule_screen.MEF_schedule(meal_inputs.last);
+  let btn_click = document.querySelector("#btn-click");
+  playSound(btn_click);
+});
+
+NEXT_BUTTON.addEventListener("click", () => {
+  schedule_screen.MEF_schedule(meal_inputs.next);
+  let btn_click = document.querySelector("#btn-click");
+  playSound(btn_click);
+});
