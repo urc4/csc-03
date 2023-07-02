@@ -10,6 +10,10 @@
   --display-background: #e5fafc; */
 /* } */
 
+/*  */
+/* Global */
+/*  */
+
 *,
 *::before,
 *::after {
@@ -34,10 +38,11 @@ body {
   height: 100vh;
 }
 
+/*  */
 /* Buttons */
+/*  */
 
 button {
-  /* Resetting default button styles */
   background: none;
   border: none;
   border-radius: 20%;
@@ -51,15 +56,22 @@ button {
   box-sizing: border-box;
 }
 
+/*  */
+/* Bottom buttons */
+/*  */
+
 .buttons-dash {
   width: 100%;
   display: flex;
   padding: 40px 10px 20px 10px;
-  /* tem opcao de fazer margin individual */
   justify-content: space-evenly;
   align-items: center;
-  background-color: #944;
+  background-color: #75e6da;
   margin-top: auto;
+}
+
+.buttons-dash button {
+  color: white;
 }
 
 .buttons-dash .left {
@@ -89,11 +101,11 @@ button {
 }
 
 .buttons-dash button:hover {
-  background-color: white;
+  border: 1px solid white;
 }
 
 .buttons-dash button:active {
-  background-color: green;
+  background-color: #43a99f;
 }
 
 .buttons-dash .material-icons {
@@ -105,19 +117,29 @@ button {
 }
 
 .buttons-dash #home-button {
-  border: 1px solid black;
   border-radius: 20%;
+  background-color: #53b8ae;
   height: 100%;
 }
 
+.buttons-dash #home-button button:hover {
+  border: 1px solid white;
+}
+
+.buttons-dash #home-button:active {
+  background-color: #434343;
+}
+
+/*  */
 /* Screen selection */
+/*  */
+
 .screen {
   display: none;
 }
 .active {
   display: flex;
   height: 100%;
-  /* width: 400px; */
   width: 100%;
 
   flex-direction: column;
@@ -125,7 +147,10 @@ button {
   align-items: center;
 }
 
-/* Material icons */
+/*  */
+/* Iphone button */
+/*  */
+
 .bottom-cell .material-icons {
   font-size: 30px;
   color: white;
@@ -134,7 +159,19 @@ button {
   border-radius: 50%;
 }
 
+.bottom-cell {
+  background-color: black;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*  */
 /* Cellphone */
+/*  */
+
 .cellphone {
   background-color: violet;
   border: 20px solid black;
@@ -148,56 +185,73 @@ button {
   align-items: center;
 }
 
+/*  */
+/* Top of teh cellphone */
+/*  */
+
 .top-cell {
   background-color: black;
   width: 100%;
   height: 5%;
 }
 
-.bottom-cell {
-  background-color: black;
-  width: 100%;
-  height: 20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+/*  */
+/* Phone information */
+/*  */
 
 .phone-info {
   display: flex;
+  color: white;
   /* flex-direction: column; */
   justify-content: space-between;
   width: 100%;
   height: 5%;
-  background-color: grey;
+  background-color: rgb(187, 182, 182);
 }
 
 .connection {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.connection span {
+  font-size: 12px;
+}
+
+.connection {
+  margin-left: 1%;
+}
+
+#current-hours {
+  margin-right: 9%;
+}
+
+#battery {
+  margin-right: 1%;
 }
 
 .phone-info .material-icons {
-  font-size: 24px;
-  color: red;
-  background-color: green;
-  border: 1px solid white;
+  font-size: 16px;
+  background: none;
   border-radius: 50%;
 }
 
 #battery .material-icons {
-  color: aqua;
-  background-color: white;
+  background: none;
 }
+
+/*  */
+/* Top of the app */
+/*  */
 
 .top-dash {
   width: 100%;
   height: 20%;
   display: flex;
   padding: 40px 10px 20px 10px;
-  /* tem opcao de fazer margin individual */
   justify-content: space-between;
-  background-color: #944;
+  background-color: #75e6da;
   margin-top: auto;
 }
 
@@ -217,23 +271,35 @@ button {
   width: 100%;
 }
 
+/*  */
 /* Styling for Menu screen */
+/*  */
+
 #menuScreen {
   background-color: #f2f2f2;
 }
 
+/*  */
 /* Styling for elements inside Menu screen */
+/*  */
+
 #menuScreen h1 {
   color: #333;
   font-size: 24px;
 }
 
+/*  */
 /* Styling for Schedule screen */
+/*  */
+
 #scheduleScreen {
   background-color: #f2f2f2;
 }
 
+/*  */
 /* Styling for elements inside Schedule screen */
+/*  */
+
 .home-button {
   width: 20px;
   height: auto;
@@ -251,13 +317,19 @@ button {
   font-size: 24px;
 }
 
+/*  */
 /* Styling for Feed screen */
+/*  */
+
 #feedScreen {
   background-color: #f2f2f2;
   background-color: aqua;
 }
 
+/*  */
 /* Styling for elements inside Feed screen */
+/*  */
+
 #feedScreen h1 {
   color: #944;
   font-size: 24px;
@@ -278,12 +350,18 @@ button {
   height: 100%;
 }
 
+/*  */
 /* Styling for Call screen */
+/*  */
+
 #callScreen {
   background-color: #f2f2f2;
 }
 
+/*  */
 /* Styling for elements inside Call screen */
+/*  */
+
 #callScreen h1 {
   color: #995;
   font-size: 24px;
