@@ -34,6 +34,82 @@ body {
   height: 100vh;
 }
 
+/* Buttons */
+
+button {
+  /* Resetting default button styles */
+  background: none;
+  border: none;
+  border-radius: 20%;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.buttons-dash {
+  width: 100%;
+  display: flex;
+  padding: 40px 10px 20px 10px;
+  /* tem opcao de fazer margin individual */
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #944;
+  margin-top: auto;
+}
+
+.buttons-dash .left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin-left: 10%;
+}
+
+.buttons-dash .left button {
+  margin-right: 20%;
+}
+
+.buttons-dash .right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin-right: 10%;
+}
+
+.buttons-dash .right button {
+  margin-left: 20%;
+}
+
+.buttons-dash button {
+  height: 60%;
+}
+
+.buttons-dash button:hover {
+  background-color: white;
+}
+
+.buttons-dash button:active {
+  background-color: green;
+}
+
+.buttons-dash .material-icons {
+  font-size: 24px;
+}
+
+.buttons-dash #home-icon {
+  font-size: 42px;
+}
+
+.buttons-dash #home-button {
+  border: 1px solid black;
+  border-radius: 20%;
+  height: 100%;
+}
+
 /* Screen selection */
 .screen {
   display: none;
@@ -51,10 +127,10 @@ body {
 
 /* Material icons */
 .bottom-cell .material-icons {
-  font-size: 24px;
-  color: purple;
-  background-color: yellow;
+  font-size: 30px;
+  color: white;
   border: 1px solid white;
+  padding: 2%;
   border-radius: 50%;
 }
 
@@ -139,16 +215,6 @@ body {
 .dashboard {
   height: 100%;
   width: 100%;
-}
-
-.buttons-dash {
-  width: 100%;
-  display: flex;
-  padding: 40px 10px 20px 10px;
-  /* tem opcao de fazer margin individual */
-  justify-content: space-evenly;
-  background-color: #944;
-  margin-top: auto;
 }
 
 /* Styling for Menu screen */

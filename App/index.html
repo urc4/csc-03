@@ -105,11 +105,25 @@
         </div>
       </div>
       <div class="buttons-dash">
-        <button onclick="showScreen('scheduleScreen')">Schedule</button>
-        <button onclick="showScreen('feedScreen')">Feed</button>
-        <button onclick="showScreen('menuScreen')">Menu</button>
-        <button onclick="showScreen('callScreen')">Call</button>
-        <button onclick="showScreen('analysisScreen')">Analysis</button>
+        <div class="left">
+          <button onclick="showScreen('scheduleScreen')">
+            <i class="material-icons">alarm</i>
+          </button>
+          <button onclick="showScreen('feedScreen')">
+            <i class="material-icons">pets</i>
+          </button>
+        </div>
+        <button id="home-button" onclick="showScreen('menuScreen')">
+          <i id="home-icon" class="material-icons">home</i>
+        </button>
+        <div class="right">
+          <button onclick="showScreen('callScreen')">
+            <i class="material-icons">call</i>
+          </button>
+          <button onclick="showScreen('analysisScreen')">
+            <i class="material-icons">dashboard</i>
+          </button>
+        </div>
       </div>
       <div class="bottom-cell">
         <i class="material-icons">check_box_outline_blank</i>
