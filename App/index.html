@@ -21,6 +21,7 @@
   <body>
     <div class="cellphone">
       <div class="top-cell"></div>
+      <audio id="btn-click" src="./assets/sounds/button-click.mp3"></audio>
       <div class="phone-info">
         <div class="connection">
           <div id="4g">
@@ -38,28 +39,65 @@
         </div>
       </div>
       <div class="top-dash">
-        <div id="warning-lifeline">PET,INC.</div>
+        <div id="warning-lifeline">
+          <span>HELLO, </span> <span> CECILIA!</span>
+        </div>
+
         <div id="profile-pic">
           <img src="./assets/images/veterinary-icon.png" alt="profile-pic" />
+          <span>PET,INC.</span>
         </div>
       </div>
 
       <div class="dashboard">
         <!-- Menu screen -->
         <div id="menuScreen" class="screen active">
-          <h1>Menu</h1>
-          <!-- Menu buttons -->
-          <button onclick="showScreen('scheduleScreen')">Schedule</button>
-          <button onclick="showScreen('feedScreen')">Feed</button>
-          <button onclick="showScreen('callScreen')">Call</button>
-          <button onclick="showScreen('analysisScreen')">Analysis</button>
+          <div class="section-title">
+            <i class="material-icons">home</i> &nbsp;MENU
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="material-icons">chevron_right</i>
+            <i class="material-icons">chevron_right</i>
+            <i class="material-icons">chevron_right</i>
+          </div>
+          <div class="cards">
+            <!-- Menu buttons -->
+            <button onclick="showScreen('scheduleScreen')">
+              <div class="menu-card">
+                <i class="material-icons">alarm</i>
+                <span>SCHEDULE</span>
+              </div>
+            </button>
+            <button onclick="showScreen('feedScreen')">
+              <div class="menu-card">
+                <i class="material-icons">pets</i>
+                <span>FEED</span>
+              </div>
+            </button>
+            <button onclick="showScreen('callScreen')">
+              <div class="menu-card">
+                <i class="material-icons">call</i>
+                <span>CALL</span>
+              </div>
+            </button>
+            <button onclick="showScreen('analysisScreen')">
+              <div class="menu-card">
+                <i class="material-icons">dashboard</i>
+                <span>DASHBOARD</span>
+              </div>
+            </button>
+          </div>
         </div>
 
         <!-- Schedule screen -->
         <div id="scheduleScreen" class="screen">
-          <h1>Schedule</h1>
+          <div class="section-title">
+            <i class="material-icons">alarm</i> &nbsp;SCHEDULE
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="material-icons">chevron_right</i>
+            <i class="material-icons">chevron_right</i>
+            <i class="material-icons">chevron_right</i>
+          </div>
           <!-- Schedule content -->
-          <button onclick="showScreen('menuScreen')">Menu</button>
           <img
             src="./assets/images/feed-play-icon.png"
             alt="Transparent Image"
@@ -68,38 +106,58 @@
 
         <!-- Feed screen -->
         <div id="feedScreen" class="screen">
-          <h1>Feeding time</h1>
+          <div class="section-title">
+            <i class="material-icons">alarm</i> &nbsp;FEED
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="material-icons">chevron_right</i>
+            <i class="material-icons">chevron_right</i>
+            <i class="material-icons">chevron_right</i>
+          </div>
+
+          <div>Your pet is hungry...</div>
           <!-- Feed content -->
-          <button onclick="showScreen('menuScreen')">
-            <div class="home-button">
-              <img src="./assets/images/home-button-icon.png" alt="home" />
-            </div>
-          </button>
+          <div id="feed">
+            <div id="capacity-display">Capacity</div>
+            <button id="feed-button">
+              <i class="material-icons">play_arrow</i>
+            </button>
+          </div>
           <div id="bowl">
             <img src="./assets/images/bowl-empty-icon.png" alt="bowl" />
-          </div>
-          <div id="feed">
-            <img src="./assets/images/feed-play-icon.png" alt="feed" />
           </div>
           <div id="feed-audio">
             <audio id="bark" src="./assets/sounds/bark.wav"></audio>
             <audio id="meow" src="./assets/sounds/meow.wav"></audio>
+            <audio
+              id="pour-food"
+              src="./assets/sounds/pour-food.wav"
+              loop
+            ></audio>
           </div>
-          <div id="capacity-display">Capacity</div>
         </div>
 
         <!-- Call screen -->
         <div id="callScreen" class="screen">
-          <h1>Call</h1>
+          <div class="section-title">
+            <i class="material-icons">alarm</i> &nbsp;CALL
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="material-icons">chevron_right</i>
+            <i class="material-icons">chevron_right</i>
+            <i class="material-icons">chevron_right</i>
+          </div>
           <!-- Call content -->
-          <button onclick="showScreen('menuScreen')">Menu</button>
         </div>
 
-        <!-- Call screen -->
+        <!-- Analysis screen -->
         <div id="analysisScreen" class="screen">
-          <h1>Analysis</h1>
+          <div class="section-title">
+            <i class="material-icons">alarm</i> &nbsp;ANALYSIS
+            &nbsp;&nbsp;&nbsp;
+            <i class="material-icons">chevron_right</i>
+            <i class="material-icons">chevron_right</i>
+            <i class="material-icons">chevron_right</i>
+          </div>
           <!-- Call content -->
-          <button onclick="showScreen('menuScreen')">Menu</button>
         </div>
       </div>
       <div class="buttons-dash">

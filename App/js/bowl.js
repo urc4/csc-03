@@ -3,18 +3,6 @@ const BOWL = document.querySelector("#bowl");
 const AUDIO = document.querySelector("#feed-audio");
 const CAPACITY_DISPLAY = document.querySelector("#capacity-display");
 
-const imageButton = document.querySelector(".home-button");
-const image = imageButton.querySelector("img");
-const hoverImageSrc = "./assets/images/bowl-empty-icon.png";
-
-imageButton.addEventListener("mouseover", () => {
-  image.src = hoverImageSrc;
-});
-
-imageButton.addEventListener("mouseout", () => {
-  image.src = "./assets/images/home-button-icon.png";
-});
-
 function playSoundOnce(audio) {
   audio.play();
   audio.removeEventListener("ended", playSoundOnce);
@@ -23,6 +11,10 @@ function playSoundOnce(audio) {
 function playSound(audio) {
   audio.addEventListener("ended", playSoundOnce);
   playSoundOnce(audio);
+}
+
+function playSoundIndefinitely(audio) {
+  audio.play();
 }
 
 const bowl_icons = {
@@ -34,9 +26,6 @@ const feed_icons = {
   feed: "./assets/images/feed-play-icon.png",
   halt: "./assets/images/feed-pause-icon.png",
 };
-
-// fazer comportamento dos botoes aqui?
-// maybe should look at the capcaity left in the bowl so i can stop feeding automatically
 
 const bowl_inputs = {
   halt: 0,
@@ -61,6 +50,7 @@ class Bowl {
     let bowl_image = BOWL.querySelector("img");
     let feed_button_image = FEED_BUTTON.querySelector("img");
     let bark = AUDIO.querySelector("#bark");
+    let pour_food = AUDIO.querySelector("#pour-food");
 
     this.updateCapacity();
     this.interval = setInterval(this.updateCapacity.bind(this), 1000);
@@ -68,6 +58,7 @@ class Bowl {
     bowl_image.src = bowl_icons.bowl_full;
     feed_button_image.src = feed_icons.halt;
     playSound(bark);
+    playSoundIndefinitely(pour_food);
 
     // create a div or change opacity of image
     // make a sound
@@ -87,6 +78,9 @@ class Bowl {
     let bowl_image = BOWL.querySelector("img");
     let feed_button_image = FEED_BUTTON.querySelector("img");
     let meow = AUDIO.querySelector("#meow");
+    let pour_food = AUDIO.querySelector("#pour-food");
+
+    pour_food.pause();
 
     this.stopUpdateCapacity();
 

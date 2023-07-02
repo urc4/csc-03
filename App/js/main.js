@@ -1,3 +1,14 @@
+// Play sound
+function playSoundOnce(audio) {
+  audio.play();
+  audio.removeEventListener("ended", playSoundOnce);
+}
+
+function playSound(audio) {
+  audio.addEventListener("ended", playSoundOnce);
+  playSoundOnce(audio);
+}
+
 // Update classes to display the correct page
 function showScreen(screenId) {
   let screens = document.getElementsByClassName("screen");
@@ -6,6 +17,9 @@ function showScreen(screenId) {
   }
   let targetScreen = document.getElementById(screenId);
   targetScreen.classList.add("active");
+
+  let btn_click = document.querySelector("#btn-click");
+  playSound(btn_click);
 }
 
 // Display current hours
@@ -50,7 +64,7 @@ function updateBatteryLevel(batteryLevel) {
   let batteryInterval = setInterval(function () {
     // Decrease the battery level
     batteryLevel -= 1;
-    if (batteryLevel < 0) {
+    if (batteryLevel === 0) {
       batteryLevel = 1;
     }
     document.getElementById("battery-life").textContent = `${batteryLevel} %`;
@@ -71,7 +85,7 @@ function updateBatteryLevel(batteryLevel) {
   }, 5 * 60 * 1000);
 }
 
-let batteryLevel = getRandomInt(0, 100);
+let batteryLevel = getRandomInt(1, 100);
 document.getElementById("battery-life").textContent = `${batteryLevel} %`;
 let icon = document.getElementById("battery-icon");
 
