@@ -521,3 +521,45 @@ button {
 #analysisScreen {
   background-color: #75e6da;
 }
+
+#analysisScreen {
+  background-color: #75e6da;
+}
+
+#analysisScreen .section-title {
+  margin-bottom: 20px;
+}
+
+#analysisScreen #graph-card {
+  width: 220px;
+  height: 250px;
+  background-color: white;
+}
+
+#analysisScreen .analysis-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* width: 300px;
+  padding-bottom: 50px; */
+}
+
+#analysisScreen #graph-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 300px;
+  padding-bottom: 50px;
+}
+
+#analysisScreen button:hover {
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+}
+
+#analysisScreen button:active {
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+}

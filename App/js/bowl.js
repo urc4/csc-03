@@ -70,7 +70,7 @@ class Bowl {
   }
   updateCapacity() {
     this.capacity += this.feeding_rate;
-    CAPACITY_DISPLAY.textContent = `Capacity ${this.capacity}`;
+    CAPACITY_DISPLAY.textContent = `Quantity ${this.capacity}`;
   }
   stopUpdateCapacity() {
     clearInterval(this.interval);
@@ -120,7 +120,7 @@ class Bowl {
 const feeding_screen = new Bowl();
 let feed_input = bowl_inputs.feed;
 
-CAPACITY_DISPLAY.textContent = `Capacity ${feeding_screen.capacity}`;
+CAPACITY_DISPLAY.textContent = `Quantity ${feeding_screen.capacity}`;
 
 FEED_BUTTON.addEventListener("click", () => {
   feeding_screen.MEF_bowl(feed_input);

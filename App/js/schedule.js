@@ -1,6 +1,6 @@
 const MEAL = document.querySelector("#meal-card");
-const LAST_BUTTON = document.querySelector("#backward");
-const NEXT_BUTTON = document.querySelector("#forward");
+const LAST_BUTTON = document.querySelector("#backward-schedule");
+const NEXT_BUTTON = document.querySelector("#forward-schedule");
 
 function playSoundOnce(audio) {
   audio.play();

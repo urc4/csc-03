@@ -12,6 +12,7 @@
     <script src="./js/schedule.js" defer></script>
     <script src="./js/bowl.js" defer></script>
     <script src="./js/telephone.js" defer></script>
+    <script src="./js/analysis.js" defer></script>
 
     <link
       rel="stylesheet"
@@ -99,7 +100,7 @@
           </div>
           <!-- Schedule content -->
           <div class="schedule-card">
-            <button id="backward">
+            <button id="backward-schedule">
               <i class="material-icons">arrow_back</i>
             </button>
             <div id="meal-card">
@@ -107,7 +108,7 @@
               <span id="scheduled-time">&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <span id="scheduled-quantity">&nbsp;&nbsp;&nbsp;&nbsp;</span>
             </div>
-            <button id="forward">
+            <button id="forward-schedule">
               <i class="material-icons">arrow_forward</i>
             </button>
           </div>
@@ -181,7 +182,19 @@
             <i class="material-icons">chevron_right</i>
             <i class="material-icons">chevron_right</i>
           </div>
-          <!-- Call content -->
+          <!-- Analysis content -->
+          <div class="analysis-card">
+            <div id="graph-text">&nbsp;</div>
+            <div id="graph-container">
+              <button id="backward-analysis">
+                <i class="material-icons">arrow_back</i>
+              </button>
+              <div id="graph-card">&nbsp;</div>
+              <button id="forward-analysis">
+                <i class="material-icons">arrow_forward</i>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="buttons-dash">
