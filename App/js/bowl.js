@@ -39,8 +39,8 @@ const bowl_states = {
 
 class Bowl {
   constructor() {
-    this.feeding_rate = 20;
-    this.capacity = 20;
+    this.feeding_rate = 5;
+    this.capacity = 0;
     //  inerente ao alimentador
     this.state = bowl_states.halted;
     this.interval = null;
@@ -86,6 +86,7 @@ class Bowl {
     pour_food.pause();
 
     this.stopUpdateCapacity();
+    this.capacity = 0;
 
     document.querySelector("#zeus").textContent = `Feed Zeus`;
     bowl_image.src = bowl_icons.bowl_empty;
