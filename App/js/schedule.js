@@ -1,6 +1,13 @@
 const MEAL = document.querySelector("#meal-card");
 const LAST_BUTTON = document.querySelector("#backward-schedule");
 const NEXT_BUTTON = document.querySelector("#forward-schedule");
+const TIME_INPUT = document.querySelector("#scheduled-time-input");
+const UPDATE_BUTTON = document.querySelector("#update-button");
+const QUANTITY_INPUT = document.querySelector("#scheduled-quantity-input");
+const QUANTITY_UPDATE_BUTTON = document.querySelector(
+  "#quantity-update-button"
+);
+const TIME_UPDATE_BUTTON = document.querySelector("#time-update-button");
 
 function playSoundOnce(audio) {
   audio.play();
@@ -86,6 +93,43 @@ class Schedule {
     }
   }
 
+  updateQuantity(quantity) {
+    switch (this.state) {
+      case meal_states.breakfast:
+        this.breakfast.updateAmount(quantity);
+        break;
+      case meal_states.lunch:
+        this.lunch.updateAmount(quantity);
+        break;
+      case meal_states.dinner:
+        this.dinner.updateAmount(quantity);
+        break;
+      default:
+        break;
+    }
+    this.display(this.state);
+  }
+
+  updateTime(time) {
+    const [hours, minutes] = time.split(":");
+    const time_set = { hours: parseInt(hours), minutes: parseInt(minutes) };
+
+    switch (this.state) {
+      case meal_states.breakfast:
+        this.breakfast.updateTime(time_set);
+        break;
+      case meal_states.lunch:
+        this.lunch.updateTime(time_set);
+        break;
+      case meal_states.dinner:
+        this.dinner.updateTime(time_set);
+        break;
+      default:
+        break;
+    }
+    this.display(this.state);
+  }
+
   MEF_schedule(input) {
     switch (this.state) {
       case meal_states.breakfast:
@@ -150,4 +194,61 @@ NEXT_BUTTON.addEventListener("click", () => {
   schedule_screen.MEF_schedule(meal_inputs.next);
   let btn_click = document.querySelector("#btn-click");
   playSound(btn_click);
+});
+
+// // Update quantity
+// UPDATE_BUTTON.addEventListener("click", () => {
+//   const quantity = parseInt(QUANTITY_INPUT.value);
+// let btn_click = document.querySelector("#btn-click");
+// playSound(btn_click);
+
+//   if (!isNaN(quantity)) {
+//     schedule_screen.updateQuantity(quantity);
+//   }
+// });
+
+// // Update time
+// TIME_INPUT.addEventListener("change", () => {
+//   const time = TIME_INPUT.value;
+//   schedule_screen.updateTime(time);
+// });
+
+QUANTITY_UPDATE_BUTTON.addEventListener("click", () => {
+  const newQuantity = parseInt(QUANTITY_INPUT.value);
+
+  let btn_click = document.querySelector("#btn-click");
+  playSound(btn_click);
+
+  if (schedule_screen.state === meal_states.breakfast) {
+    schedule_screen.breakfast.updateAmount(newQuantity);
+  }
+  if (schedule_screen.state === meal_states.lunch) {
+    schedule_screen.lunch.updateAmount(newQuantity);
+  }
+
+  if (schedule_screen.state === meal_states.dinner) {
+    schedule_screen.dinner.updateAmount(newQuantity);
+  }
+
+  schedule_screen.display(schedule_screen.state);
+});
+
+TIME_UPDATE_BUTTON.addEventListener("click", () => {
+  const newTime = TIME_INPUT.value;
+  const [hours, minutes] = newTime.split(":").map((part) => parseInt(part));
+
+  let btn_click = document.querySelector("#btn-click");
+  playSound(btn_click);
+
+  if (schedule_screen.state === meal_states.breakfast) {
+    schedule_screen.breakfast.updateTime({ hours, minutes });
+  }
+  if (schedule_screen.state === meal_states.lunch) {
+    schedule_screen.lunch.updateTime({ hours, minutes });
+  }
+
+  if (schedule_screen.state === meal_states.dinner) {
+    schedule_screen.dinner.updateTime({ hours, minutes });
+  }
+  schedule_screen.display(schedule_screen.state);
 });

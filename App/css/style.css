@@ -392,12 +392,12 @@ button {
 }
 
 #scheduleScreen .section-title {
-  margin-bottom: 50px;
+  margin-bottom: 15px;
 }
 
 #scheduleScreen #meal-card {
-  width: 150px;
-  height: 150px;
+  width: 230px;
+  height: 280px;
   background-color: white;
 }
 
@@ -428,8 +428,19 @@ button {
   border-radius: 10px;
 }
 
+#meal-card div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #meal-card .material-icons {
   font-size: 32px;
+}
+
+#create-space {
+  margin-top: 10px;
 }
 
 /*  */

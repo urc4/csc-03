@@ -105,8 +105,29 @@
             </button>
             <div id="meal-card">
               <i class="material-icons">restaurant</i>
-              <span id="scheduled-time">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-              <span id="scheduled-quantity">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              <div>
+                <h3>Scheduled Time:</h3>
+                <p id="scheduled-time"></p>
+              </div>
+              <div>
+                <h3>Scheduled Quantity:</h3>
+                <p id="scheduled-quantity"></p>
+              </div>
+              <span id="create-space"></span>
+              <div>
+                <label for="scheduled-quantity-input">Quantity:</label>
+                <input
+                  type="number"
+                  id="scheduled-quantity-input"
+                  value="100"
+                />
+                <button id="quantity-update-button">Update</button>
+              </div>
+              <div>
+                <label for="scheduled-time-input">Time:</label>
+                <input type="time" id="scheduled-time-input" value="08:30" />
+                <button id="time-update-button">Update</button>
+              </div>
             </div>
             <button id="forward-schedule">
               <i class="material-icons">arrow_forward</i>
