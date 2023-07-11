@@ -239,9 +239,6 @@ NEXT_BUTTON.addEventListener("click", () => {
 QUANTITY_UPDATE_BUTTON.addEventListener("click", () => {
   const newQuantity = parseInt(QUANTITY_INPUT.value);
 
-  schedule_screen.sendBreakfastToThingSpeak();
-  schedule_screen.sendDinnerToThingSpeak();
-
   let btn_click = document.querySelector("#btn-click");
   playSound(btn_click);
 
@@ -257,14 +254,14 @@ QUANTITY_UPDATE_BUTTON.addEventListener("click", () => {
   }
 
   schedule_screen.display(schedule_screen.state);
+
+  schedule_screen.sendBreakfastToThingSpeak();
+  schedule_screen.sendDinnerToThingSpeak();
 });
 
 TIME_UPDATE_BUTTON.addEventListener("click", () => {
   const newTime = TIME_INPUT.value;
   const [hours, minutes] = newTime.split(":").map((part) => parseInt(part));
-
-  schedule_screen.sendBreakfastToThingSpeak();
-  schedule_screen.sendDinnerToThingSpeak();
 
   let btn_click = document.querySelector("#btn-click");
   playSound(btn_click);
@@ -280,4 +277,7 @@ TIME_UPDATE_BUTTON.addEventListener("click", () => {
     schedule_screen.dinner.updateTime({ hours, minutes });
   }
   schedule_screen.display(schedule_screen.state);
+
+  schedule_screen.sendBreakfastToThingSpeak();
+  schedule_screen.sendDinnerToThingSpeak();
 });
