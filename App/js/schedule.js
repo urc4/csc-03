@@ -143,7 +143,8 @@ class Schedule {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.log("Data sent to ThingSpeak:", data);
+        console.log("Data sent to ThingSpeak:", field);
+        console.log("Response:", data);
       })
       .catch((error) => {
         console.error("Error sending data to ThingSpeak:", error);
@@ -244,6 +245,7 @@ QUANTITY_UPDATE_BUTTON.addEventListener("click", () => {
 
   if (schedule_screen.state === meal_states.breakfast) {
     schedule_screen.breakfast.updateAmount(newQuantity);
+    schedule_screen.sendBreakfastToThingSpeak();
   }
   if (schedule_screen.state === meal_states.lunch) {
     schedule_screen.lunch.updateAmount(newQuantity);
@@ -251,12 +253,10 @@ QUANTITY_UPDATE_BUTTON.addEventListener("click", () => {
 
   if (schedule_screen.state === meal_states.dinner) {
     schedule_screen.dinner.updateAmount(newQuantity);
+    schedule_screen.sendDinnerToThingSpeak();
   }
 
   schedule_screen.display(schedule_screen.state);
-
-  schedule_screen.sendBreakfastToThingSpeak();
-  schedule_screen.sendDinnerToThingSpeak();
 });
 
 TIME_UPDATE_BUTTON.addEventListener("click", () => {
@@ -268,6 +268,7 @@ TIME_UPDATE_BUTTON.addEventListener("click", () => {
 
   if (schedule_screen.state === meal_states.breakfast) {
     schedule_screen.breakfast.updateTime({ hours, minutes });
+    schedule_screen.sendBreakfastToThingSpeak();
   }
   if (schedule_screen.state === meal_states.lunch) {
     schedule_screen.lunch.updateTime({ hours, minutes });
@@ -275,9 +276,7 @@ TIME_UPDATE_BUTTON.addEventListener("click", () => {
 
   if (schedule_screen.state === meal_states.dinner) {
     schedule_screen.dinner.updateTime({ hours, minutes });
+    schedule_screen.sendDinnerToThingSpeak();
   }
   schedule_screen.display(schedule_screen.state);
-
-  schedule_screen.sendBreakfastToThingSpeak();
-  schedule_screen.sendDinnerToThingSpeak();
 });

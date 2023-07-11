@@ -120,9 +120,6 @@ class Bowl {
         if (input === bowl_inputs.feed) {
           this.state = bowl_states.feeding;
           this.feed();
-          // aqui ordem da funcao importa pois indica qual vai ser estado atualizado
-          // talvez poderia dar um nome diferente como update criar uma funcao feed e outra updateState()
-          // mas ai sugou
         }
         break;
       case bowl_states.feeding:
