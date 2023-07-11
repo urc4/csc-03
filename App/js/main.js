@@ -85,7 +85,7 @@ function updateBatteryLevel(batteryLevel) {
   }, 5 * 60 * 1000);
 }
 
-let batteryLevel = getRandomInt(1, 100);
+let batteryLevel = getRandomInt(20, 100);
 document.getElementById("battery-life").textContent = `${batteryLevel} %`;
 let icon = document.getElementById("battery-icon");
 
