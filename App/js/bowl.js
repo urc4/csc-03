@@ -70,7 +70,7 @@ class Bowl {
   }
   updateCapacity() {
     this.capacity += this.feeding_rate;
-    CAPACITY_DISPLAY.textContent = `Quantity ${this.capacity}`;
+    CAPACITY_DISPLAY.textContent = `Quantity ${this.capacity} g`;
   }
   stopUpdateCapacity() {
     clearInterval(this.interval);
@@ -86,6 +86,9 @@ class Bowl {
     pour_food.pause();
 
     this.stopUpdateCapacity();
+
+    this.sendQuantityToThingSpeak(this.capacity);
+
     this.capacity = 0;
 
     document.querySelector("#zeus").textContent = `Feed Zeus`;
@@ -93,6 +96,22 @@ class Bowl {
     FEED_BUTTON.textContent = feed_icons.feed;
     playSound(meow);
     playSound(btn_click);
+  }
+
+  sendQuantityToThingSpeak(quantity) {
+    const writeKey = "KJ40SS6RMVZLTNPU";
+    const channelID = "2217645";
+    const url = `https://api.thingspeak.com/update?api_key=${writeKey}&field1=0&field2=0&field3=0&field4=0&field5=${quantity}`;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Quantity sent to ThingSpeak:", quantity);
+        console.log("Response:", data);
+      })
+      .catch((error) => {
+        console.error("Error sending quantity to ThingSpeak:", error);
+      });
   }
 
   MEF_bowl(input) {

@@ -130,6 +130,26 @@ class Schedule {
     this.display(this.state);
   }
 
+  sendToThingSpeak(field) {
+    const writeKey = "KJ40SS6RMVZLTNPU";
+    const channelID = "2217645";
+    const field1 = field.one;
+    const field2 = field.two;
+    const field3 = field.three;
+    const field4 = field.four;
+    const field5 = field.five;
+    const url = `https://api.thingspeak.com/update?api_key=${writeKey}&field1=${field1}&field2=${field2}&field3=${field3}&field4=${field4}&field5=${field5}`;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Data sent to ThingSpeak:", data);
+      })
+      .catch((error) => {
+        console.error("Error sending data to ThingSpeak:", error);
+      });
+  }
+
   MEF_schedule(input) {
     switch (this.state) {
       case meal_states.breakfast:
@@ -173,6 +193,26 @@ class Schedule {
         break;
     }
   }
+
+  sendBreakfastToThingSpeak() {
+    let field = {};
+    field.one = this.breakfast.time.hours;
+    field.two = this.breakfast.time.minutes;
+    field.three = 0;
+    field.four = 0;
+    field.five = this.breakfast.weight;
+    this.sendToThingSpeak(field);
+  }
+
+  sendDinnerToThingSpeak() {
+    let field = {};
+    field.one = 0;
+    field.two = 0;
+    field.three = this.breakfast.time.hours;
+    field.four = this.breakfast.time.minutes;
+    field.five = this.breakfast.weight;
+    this.sendToThingSpeak(field);
+  }
 }
 
 const schedule_screen = new Schedule();
@@ -196,25 +236,11 @@ NEXT_BUTTON.addEventListener("click", () => {
   playSound(btn_click);
 });
 
-// // Update quantity
-// UPDATE_BUTTON.addEventListener("click", () => {
-//   const quantity = parseInt(QUANTITY_INPUT.value);
-// let btn_click = document.querySelector("#btn-click");
-// playSound(btn_click);
-
-//   if (!isNaN(quantity)) {
-//     schedule_screen.updateQuantity(quantity);
-//   }
-// });
-
-// // Update time
-// TIME_INPUT.addEventListener("change", () => {
-//   const time = TIME_INPUT.value;
-//   schedule_screen.updateTime(time);
-// });
-
 QUANTITY_UPDATE_BUTTON.addEventListener("click", () => {
   const newQuantity = parseInt(QUANTITY_INPUT.value);
+
+  schedule_screen.sendBreakfastToThingSpeak();
+  schedule_screen.sendDinnerToThingSpeak();
 
   let btn_click = document.querySelector("#btn-click");
   playSound(btn_click);
@@ -236,6 +262,9 @@ QUANTITY_UPDATE_BUTTON.addEventListener("click", () => {
 TIME_UPDATE_BUTTON.addEventListener("click", () => {
   const newTime = TIME_INPUT.value;
   const [hours, minutes] = newTime.split(":").map((part) => parseInt(part));
+
+  schedule_screen.sendBreakfastToThingSpeak();
+  schedule_screen.sendDinnerToThingSpeak();
 
   let btn_click = document.querySelector("#btn-click");
   playSound(btn_click);
