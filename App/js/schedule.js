@@ -208,9 +208,9 @@ class Schedule {
     let field = {};
     field.one = 0;
     field.two = 0;
-    field.three = this.breakfast.time.hours;
-    field.four = this.breakfast.time.minutes;
-    field.five = this.breakfast.weight;
+    field.three = this.dinner.time.hours;
+    field.four = this.dinner.time.minutes;
+    field.five = this.dinner.weight;
     this.sendToThingSpeak(field);
   }
 }
