@@ -47,21 +47,33 @@ class Analysis {
   }
 
   display(graph) {
+    let total = document.querySelector("#total");
+    let nutrient = document.querySelector("#nutrient");
+
     switch (graph) {
       case graph_states.week:
         GRAPH.querySelector(
           "#graph-text"
         ).textContent = `Last ${this.week.time} days`;
+        total.src = "./assets/analysis/total7.png";
+        nutrient.src = "./assets/analysis/bynutrient7.png";
+
         break;
       case graph_states.month:
         GRAPH.querySelector(
           "#graph-text"
         ).textContent = `Last ${this.month.time} days`;
+        total.src = "./assets/analysis/total30.png";
+        nutrient.src = "./assets/analysis/bynutrient30.png";
+
         break;
       case graph_states.semester:
         GRAPH.querySelector(
           "#graph-text"
         ).textContent = `Last ${this.semester.time} days`;
+        total.src = "./assets/analysis/total180.png";
+        nutrient.src = "./assets/analysis/bynutrient180.png";
+
         break;
       default:
         break;

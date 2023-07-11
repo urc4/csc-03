@@ -556,9 +556,14 @@ button {
 }
 
 #analysisScreen #graph-card {
-  width: 220px;
-  height: 250px;
+  width: 270px;
+  height: 260px;
   background-color: white;
+}
+
+#graph-card img {
+  width: 270px;
+  height: 130px;
 }
 
 #analysisScreen .analysis-card {
